@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmilePro Diş Kliniği</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#f0f9ff;--card:#ffffff;--accent:#0ea5e9;--dark:#0c1a2e;--text:#1e3a5f;--muted:#6b7280;}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--text);}
+nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);padding:1rem 5%;display:flex;justify-content:space-between;align-items:center;z-index:100;border-bottom:2px solid #e0f2fe;box-shadow:0 2px 20px rgba(14,165,233,0.08);}
+.logo{font-size:1.5rem;font-weight:800;color:var(--accent);}
+.logo span{color:var(--dark);}
+.nav-links a{color:var(--text);text-decoration:none;margin-left:2rem;font-size:0.9rem;}
+.nav-links a:hover{color:var(--accent);}
+.btn-blue{background:var(--accent);color:white;padding:0.7rem 1.8rem;border:none;border-radius:0.5rem;font-weight:600;cursor:pointer;text-decoration:none;display:inline-block;transition:all 0.3s;}
+.btn-blue:hover{background:#0284c7;}
+.hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 5% 4rem;gap:4rem;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);}
+.hero-badge{display:inline-block;background:#dbeafe;border:1px solid #93c5fd;color:var(--accent);padding:0.4rem 1rem;border-radius:2rem;font-size:0.85rem;margin-bottom:1.5rem;font-weight:600;}
+.hero h1{font-size:3rem;font-weight:800;line-height:1.2;margin-bottom:1.5rem;color:var(--dark);}
+.hero h1 span{color:var(--accent);}
+.hero p{color:var(--muted);font-size:1.05rem;line-height:1.8;margin-bottom:2rem;}
+.hero-img{width:100%;height:480px;object-fit:cover;border-radius:1.5rem;box-shadow:0 20px 50px rgba(14,165,233,0.15);}
+.trust-strip{padding:2.5rem 5%;background:var(--dark);display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.trust-item .num{font-size:2.2rem;font-weight:800;color:var(--accent);}
+.trust-item .label{color:#94a3b8;font-size:0.85rem;margin-top:0.3rem;}
+.section{padding:5rem 5%;}
+.section-tag{color:var(--accent);font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:0.8rem;}
+.section-title{font-size:2.2rem;font-weight:800;margin-bottom:1rem;color:var(--dark);}
+.section-sub{color:var(--muted);line-height:1.7;max-width:500px;}
+.treatments-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.treatment-card{background:var(--card);border-radius:1rem;overflow:hidden;border:1px solid #e0f2fe;transition:all 0.3s;box-shadow:0 2px 15px rgba(0,0,0,0.05);}
+.treatment-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(14,165,233,0.1);}
+.treatment-img{width:100%;height:190px;object-fit:cover;}
+.treatment-body{padding:1.5rem;}
+.treatment-name{font-weight:800;color:var(--dark);margin-bottom:0.5rem;}
+.treatment-desc{color:var(--muted);font-size:0.85rem;line-height:1.6;margin-bottom:0.8rem;}
+.treatment-price{color:var(--accent);font-weight:700;font-size:0.9rem;}
+.team-section{padding:5rem 5%;background:var(--card);}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem;}
+.team-card{border-radius:1rem;overflow:hidden;border:1px solid #e0f2fe;transition:all 0.3s;box-shadow:0 2px 15px rgba(0,0,0,0.04);}
+.team-card:hover{transform:translateY(-5px);}
+.team-img{width:100%;height:260px;object-fit:cover;object-position:top;}
+.team-info{padding:1.5rem;background:white;}
+.team-name{font-weight:800;color:var(--dark);margin-bottom:0.3rem;}
+.team-spec{color:var(--accent);font-size:0.85rem;margin-bottom:0.5rem;}
+.team-exp{color:var(--muted);font-size:0.8rem;}
+.contact-section{padding:5rem 5%;background:linear-gradient(135deg,#e0f2fe,#f0f9ff);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.contact-img{width:100%;height:420px;object-fit:cover;border-radius:1rem;box-shadow:0 20px 40px rgba(14,165,233,0.12);}
+.form-group{margin-bottom:1.2rem;}
+.form-group label{display:block;color:var(--text);font-size:0.85rem;font-weight:600;margin-bottom:0.4rem;}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:white;border:1px solid #bae6fd;border-radius:0.5rem;padding:0.8rem 1rem;color:var(--text);font-size:0.95rem;outline:none;transition:border 0.3s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--accent);}
+.form-group textarea{height:110px;resize:none;}
+footer{background:var(--dark);padding:3rem 5%;text-align:center;color:#94a3b8;}
+.footer-logo{font-size:1.6rem;font-weight:800;color:var(--accent);margin-bottom:0.8rem;}
+@media(max-width:768px){.hero{grid-template-columns:1fr;}.trust-strip,.treatments-grid,.team-grid,.contact-grid{grid-template-columns:1fr;}.nav-links{display:none;}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">Smile<span>Pro</span></div>
+  <div class="nav-links">
+    <a href="#">Ana Sayfa</a><a href="#">Tedaviler</a><a href="#">Doktorlarımız</a><a href="#">Teknoloji</a><a href="#">Randevu</a>
+  </div>
+  <a href="#" class="btn-blue">Online Randevu</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-badge">Dijital Diş Hekimliğinde Öncü</div>
+    <h1>Sağlıklı ve <span>Parlak</span> Bir Gülüş Hak Ediyorsunuz</h1>
+    <p>SmilePro Diş Kliniği'nde son teknoloji ekipmanlar ve uzman diş hekimleri kadromuzla ağız sağlığınıza değer katıyoruz.</p>
+    <a href="#" class="btn-blue">Randevu Al</a>
+  </div>
+  <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=800&q=80" alt="Diş Kliniği" class="hero-img">
+</section>
+
+<div class="trust-strip">
+  <div class="trust-item"><div class="num">15.000+</div><div class="label">Mutlu Hasta</div></div>
+  <div class="trust-item"><div class="num">18</div><div class="label">Yıllık Deneyim</div></div>
+  <div class="trust-item"><div class="num">12</div><div class="label">Uzman Diş Hekimi</div></div>
+  <div class="trust-item"><div class="num">4.9</div><div class="label">Google Puanı</div></div>
+</div>
+
+<section class="section">
+  <div class="section-tag">Tedavilerimiz</div>
+  <div class="section-title">Hizmetlerimiz</div>
+  <div class="treatments-grid">
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80" alt="Implant" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Dental İmplant</div><div class="treatment-desc">Eksik dişleriniz için kalıcı ve doğal görünümlü implant çözümleri.</div><div class="treatment-price">8.000 TL'den başlayan fiyatlarla</div></div></div>
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=600&q=80" alt="Ortodonti" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Ortodonti — Şeffaf Plak</div><div class="treatment-desc">Invisalign ve şeffaf plak tedavileri ile görünmez diş teli uygulaması.</div><div class="treatment-price">15.000 TL'den başlayan fiyatlarla</div></div></div>
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=600&q=80" alt="Beyazlatma" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Diş Beyazlatma</div><div class="treatment-desc">Profesyonel ofis tipi beyazlatma ile gülüşünüzü birkaç ton aydınlatın.</div><div class="treatment-price">2.500 TL'den başlayan fiyatlarla</div></div></div>
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80" alt="Estetik" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Estetik Diş Hekimliği</div><div class="treatment-desc">Porselen kaplama ve lamine veneer ile kusursuz gülüş tasarımı.</div><div class="treatment-price">3.000 TL/diş'ten başlayan fiyatlarla</div></div></div>
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&q=80" alt="Kanal" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Kanal Tedavisi</div><div class="treatment-desc">Ağrısız kanal tedavisi teknikleriyle dişinizi kurtarıyoruz.</div><div class="treatment-price">2.000 TL'den başlayan fiyatlarla</div></div></div>
+    <div class="treatment-card"><img src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?w=600&q=80" alt="Çocuk" class="treatment-img"><div class="treatment-body"><div class="treatment-name">Çocuk Diş Hekimliği</div><div class="treatment-desc">Çocuklara özel yaklaşım ve eğlenceli tedavi süreçleriyle sağlıklı başlangıç.</div><div class="treatment-price">500 TL'den başlayan fiyatlarla</div></div></div>
+  </div>
+</section>
+
+<section class="team-section">
+  <div class="section-tag">Doktorlarımız</div>
+  <div class="section-title">Uzman Ekibimiz</div>
+  <div class="team-grid">
+    <div class="team-card"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=500&q=80" alt="Doktor" class="team-img"><div class="team-info"><div class="team-name">Dr. Selin Yıldız</div><div class="team-spec">İmplantoloji Uzmanı</div><div class="team-exp">15 yıllık deneyim — 3.000+ implant</div></div></div>
+    <div class="team-card"><img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=500&q=80" alt="Doktor" class="team-img"><div class="team-info"><div class="team-name">Dr. Murat Çelik</div><div class="team-spec">Ortodonti Uzmanı</div><div class="team-exp">12 yıllık deneyim — Invisalign Provider</div></div></div>
+    <div class="team-card"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=500&q=80" alt="Doktor" class="team-img"><div class="team-info"><div class="team-name">Dr. Aylin Kara</div><div class="team-spec">Estetik Diş Hekimi</div><div class="team-exp">10 yıllık deneyim — Gülüş Tasarımı</div></div></div>
+  </div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=800&q=80" alt="Klinik" class="contact-img">
+    <div>
+      <div class="section-tag">Randevu</div>
+      <div class="section-title">Online Randevu Alın</div>
+      <p style="color:var(--muted);margin-bottom:2rem;line-height:1.7;">Size en uygun tarih ve saatte randevunuzu kolayca oluşturun.</p>
+      <div class="form-group"><label>Ad Soyad</label><input type="text" placeholder="Adınız ve Soyadınız"></div>
+      <div class="form-group"><label>Telefon</label><input type="tel" placeholder="+90 5xx xxx xx xx"></div>
+      <div class="form-group"><label>Tedavi</label><select><option>İmplant</option><option>Ortodonti</option><option>Beyazlatma</option><option>Genel Muayene</option></select></div>
+      <div class="form-group"><label>Notunuz</label><textarea placeholder="Varsa eklemek istediğiniz bilgiler..."></textarea></div>
+      <button class="btn-blue" style="width:100%;padding:1rem;">Randevu Oluştur</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">SmilePro</div>
+  <p>Gülümseyin, hayat güzel.</p>
+  <p style="margin-top:0.8rem;">randevu@smilepro.com.tr | +90 212 555 0800 | Nişantaşı, İstanbul</p>
+  <p style="margin-top:1rem;font-size:0.8rem;">© 2025 SmilePro Diş Kliniği. Tüm hakları saklıdır.</p>
+</footer>
+</body>
+</html>
