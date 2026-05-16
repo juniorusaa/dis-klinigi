@@ -129,5 +129,45 @@ footer{background:var(--dark);padding:3rem 5%;text-align:center;color:#94a3b8;}
   <p style="margin-top:0.8rem;">randevu@smilepro.com.tr | +90 212 555 0800 | Nişantaşı, İstanbul</p>
   <p style="margin-top:1rem;font-size:0.8rem;">© 2025 SmilePro Diş Kliniği. Tüm hakları saklıdır.</p>
 </footer>
-</body>
+
+<section style="padding:5rem 5%;background:var(--card,#fff);">
+  <div style="color:#0ea5e9;font-size:0.72rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;margin-bottom:0.6rem;">Fiyat Tahmini</div>
+  <div style="font-size:2rem;font-weight:800;color:#0c1a2e;margin-bottom:0.5rem;">Tedavi Maliyeti Hesapla</div>
+  <p style="color:#6b7280;margin-bottom:2rem;max-width:500px;">İhtiyacınız olan tedavileri seçin, tahmini maliyeti hemen görün.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;max-width:900px;">
+    <div id="treatItems"></div>
+    <div style="background:linear-gradient(135deg,#e0f2fe,#f0f9ff);border-radius:1rem;padding:2rem;border:1px solid #bae6fd;text-align:center;display:flex;flex-direction:column;justify-content:center;">
+      <div style="font-size:0.82rem;color:#6b7280;margin-bottom:0.8rem;">Tahmini Toplam Maliyet</div>
+      <div id="treatTotal" style="font-size:3rem;font-weight:900;color:#0ea5e9;">0 TL</div>
+      <div style="font-size:0.78rem;color:#94a3b8;margin-top:0.8rem;">*Muayene sonrası kesin fiyat belirlenir</div>
+      <a href="#" style="display:inline-block;margin-top:1.5rem;background:#0ea5e9;color:#fff;padding:0.75rem 2rem;border-radius:0.5rem;font-weight:700;text-decoration:none;">Randevu Al</a>
+    </div>
+  </div>
+</section>
+<script>
+const treatments=[
+  {name:"Diş Temizliği (Scaling)",min:500,max:1000},
+  {name:"Dolgu (Kompozit)",min:600,max:1200},
+  {name:"Kanal Tedavisi",min:1500,max:3000},
+  {name:"Diş İmplantı",min:8000,max:15000},
+  {name:"Porselen Kaplama",min:2500,max:5000},
+  {name:"Diş Beyazlatma",min:1500,max:3500},
+  {name:"Diş Çekimi",min:300,max:800},
+  {name:"Ortodonti (Diş Teli)",min:12000,max:30000},
+];
+const ti=document.getElementById('treatItems');
+treatments.forEach((t,i)=>{
+  ti.innerHTML+=`<div style="display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;padding:0.8rem;background:#f8fafc;border-radius:0.5rem;border:1px solid #e0f2fe;">
+    <input type="checkbox" id="t${i}" onchange="updateTreat()" style="accent-color:#0ea5e9;width:16px;height:16px;">
+    <label for="t${i}" style="flex:1;font-size:0.85rem;color:#1e3a5f;cursor:pointer;">${t.name}</label>
+    <span style="font-size:0.78rem;color:#64748b;">${t.min.toLocaleString('tr-TR')}–${t.max.toLocaleString('tr-TR')} TL</span>
+  </div>`;
+});
+function updateTreat(){
+  let total=0;
+  document.querySelectorAll('#treatItems input').forEach((cb,i)=>{if(cb.checked)total+=Math.round((treatments[i].min+treatments[i].max)/2);});
+  document.getElementById('treatTotal').textContent=total.toLocaleString('tr-TR')+' TL';
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+</script></body>
 </html>
